@@ -1,0 +1,25 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title th:text="${blog.title}"></title>
+</head>
+<body>
+<h1 th:text="${blog.title}" />
+<article th:each="post : ${posts}">
+    <header>
+        <h2>
+            <a th:href="@{./posts/{id}/(id=${post.id})}" th:text="${post.title}" />
+        </h2>
+        <p th:text="${author.name}"></p>
+        <p>
+            <!--<span th:text="${author"></span>,-->
+            <time th:datetime="${post.entryDate}" th:text="${post.entryDate.toLocalDate()} + ' ' + ${post.entryDate.toLocalTime()}"/>
+        </p>
+    </header>
+    <section>
+        <div th:text="${post.body}"></div>
+    </section>
+</article>
+</body>
+</html>

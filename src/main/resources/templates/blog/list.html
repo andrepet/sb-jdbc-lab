@@ -1,0 +1,23 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Blogs app</title>
+</head>
+<body>
+<h1>Blogs</h1>
+<ul>
+    <li th:each="blog : ${blogs}">
+        <a th:href="@{/blog/{id}/(id=${blog.id})}" th:text="${blog.title}" />
+    </li>
+</ul>
+<H2>Add a new blog</H2>
+
+<div>
+    <form action="/blog" method="post">
+        Title: <input name="title" type="text"/>
+        <input type="submit" value="Add blog"/>
+    </form>
+</div>
+</body>
+</html>
