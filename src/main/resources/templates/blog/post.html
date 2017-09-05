@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title th:text="${blog.title}"></title>
+</head>
+<body>
+<h1 th:text="${blog.title}" />
+<header>
+    <h2>
+        <span th:text="${post.title}"></span>
+    </h2>
+    <p th:text="${author.name}"></p>
+    <p>
+        <!--<span th:text="${author"></span>,-->
+        <time th:datetime="${post.entryDate}" th:text="${post.entryDate.toLocalDate()} + ' ' + ${post.entryDate.toLocalTime()}"/>
+    </p>
+</header>
+<section>
+    <div th:text="${post.body}"></div>
+</section>
+
+<h2>
+    Comments
+</h2>
+<article th:each="comment : ${comments}">
+    <header>
+        <p>
+            <!--<span th:text="${author"></span>,-->
+            <time th:datetime="${comment.entryDate}" th:text="${comment.entryDate.toLocalDate()} + ' ' + ${comment.entryDate.toLocalTime()}"/>
+        </p>
+        <p>
+            <span th:text="${comment.text}" />
+        </p>
+    </header>
+    <section>
+        <span th:text="${comment.name}"></span>
+    </section>
+</article>
+
+<H2>Post a comment</H2>
+
+<div>
+    <form action="/comment" method="post">
+        Name: <input name="name" type="text"/>
+        Comment: <input name="text" type="text"/>
+        <input type="hidden" name="blogId" th:value="${blog.id}"/>
+        <input type="hidden" name="postId" th:value="${post.id}"/>
+        <input type="submit" value="Submit comment"/>
+    </form>
+</div>
+
+</body>
+</html>
