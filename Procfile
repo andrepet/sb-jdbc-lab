@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/sb-jdbc-lab-0.0.1-SNAPSHOT.jar --spring.datasource.url=jdbc:sqlserver://185.21.146.24;databasename=Academy_Assistent;user=AcademyAssistent;password=Vrrw3sfsfFRFRdzoiy
