@@ -21,7 +21,6 @@ public class BlogController {
     @Autowired
     private BlogRepository blogRepository;
 
-
     @GetMapping("/blog/")
     public ModelAndView listBlogs() {
         return new ModelAndView("blog/list")
